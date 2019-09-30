@@ -4,6 +4,6 @@
 ---
 更多联系作者方式
 微信公众号：自由的小黑  
-![微信公众号](image/weiixn.jpg)  
+![微信公众号](image/weixin.jpg)  
 CSDN：    [自由的小白](https://blog.csdn.net/zzzzlei123123123)  
 知乎：     [自由的小黑](https://www.zhihu.com/people/ziyouxiaohei/activities)
