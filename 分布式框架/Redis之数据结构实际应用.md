@@ -1,3 +1,4 @@
+[参考知乎用户：程序之心](https://zhuanlan.zhihu.com/p/50392209)
 # Redis之数据结构实际应用
 ### String
 最常规的 set/get 操作，Value 可以是 String 也可以是数字。一般做一些复杂的`计数功能`的缓存。
