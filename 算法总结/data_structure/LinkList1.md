@@ -1,6 +1,28 @@
 ### 翻转链表
 呜呜呜，链表好难....嘤嘤  
-有没快捷途径秒懂？(⊙o⊙)…  做梦吧
+有没快捷途径秒懂？(⊙o⊙)…  做梦吧  
+在这里我们介绍四种方式：头插法、使用栈、递归、非递归
+### 头插法
+```java
+class Solution{
+      public static ListNode ReverseList(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode ans = null;
+        ListNode cur = head;
+        // 因为头插法会改变cur的next指针，因此有必要把它保存起来
+        ListNode tmp = null;
+        
+        while (cur != null) {
+            tmp = cur.next;
+            cur.next = ans;
+            ans = cur;
+            cur = tmp;
+        }
+        return ans;
+    }
+}
+```
 ### 栈的方式
 ```java
 class Solution{
