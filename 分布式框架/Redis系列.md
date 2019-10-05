@@ -3,7 +3,8 @@
 [参考知乎用户：优知学院](https://zhuanlan.zhihu.com/p/58333436)  
 [参考知乎用户：java架构交流](https://zhuanlan.zhihu.com/p/55380579)  
 [参考知乎用户：动力节点](https://zhuanlan.zhihu.com/p/79778696)   
-[以后添加内容：Redis底层实现z](https://zhuanlan.zhihu.com/p/84274006 )
+[以后添加内容：Redis底层实现z](https://zhuanlan.zhihu.com/p/84274006 )  
+[https://juejin.im/post/5af5b2c36fb9a07ac65318bd](https://juejin.im/post/5af5b2c36fb9a07ac65318bd)
 
 ### Redis基础相关问题
 #### Redis 是什么？
