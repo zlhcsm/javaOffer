@@ -47,7 +47,8 @@ TreeMap | 二叉树
 - HashMap没有考虑同步，是线程不安全的；Hashtable使用了synchronized关键字，是线程安全的；
 - HashMap允许K/V都为null；后者K/V都不允许为null；
 - HashMap继承自AbstractMap类；而Hashtable继承自Dictionary类；
-### 
+### HashMap和HashSet有什么区别
+![](../image/hashSet.jpg)
 ### 如果HashMap的key是一个自定义的类，怎么办？
 重写hashcode()和euqlas()方法。
 ###  HashMap是怎么解决哈希冲突的？
