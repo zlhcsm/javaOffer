@@ -7,7 +7,7 @@
   * [5，死锁](#死锁)
   * [6，运行代码的步骤](#运行代码的步骤)
   * [7，数据库系统组成](#数据库系统组成)
-#### 查询语言  
+#### 查询语言   
 `DDL`：数据库模式定义语言，关键字：create  
 `DML`：数据操纵语言，关键字：Insert、delete、update  
 `DCL`：数据库控制语言 ，关键字：grant、remove  
@@ -23,7 +23,7 @@
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190929150512998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p6enpsZWkxMjMxMjMxMjM=,size_16,color_FFFFFF,t_70)  
 #### 进程的三态模型  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190929151433376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p6enpsZWkxMjMxMjMxMjM=,size_16,color_FFFFFF,t_70)  
-#### 虚拟内存  
+#### 虚拟内存   
 #### 死锁  
 产生死锁的原因主要是：  
 （1） 因为系统资源不足。   
