@@ -3,6 +3,7 @@
 
 ---
 更多联系作者方式
+[adf](/java基础/java面试基础P2.md)
 微信公众号：自由的小黑  
 ![微信公众号](image/weixin.jpg)  
 CSDN：    [自由的小白](https://blog.csdn.net/zzzzlei123123123)  
