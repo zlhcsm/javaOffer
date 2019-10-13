@@ -8,21 +8,21 @@
     + [官方建议](#官方建议)
   * [2,字段设计](#字段设计)
   * [3,索引](#索引)
-    + [使用索引为什么快？](#---------)
-    + [索引的存储结构？](#--------)
+    + [使用索引为什么快？](#使用索引为什么快)
+    + [索引的存储结构？](#索引的存储结构)
     + [索引的类型](#索引的类型)
     + [索引优化](#索引优化)
-    + [索引失效原因](#------)
-  * [4,sql优化建议](#sql----)
-    + [1，sql的执行顺序](#1-sql-----)
-    + [2，超过三个表最好不要 join](#2-----------join)
-    + [3，避免 SELECT *，从数据库里读出越多的数据，那么查询就会变得越慢](#3----select--------------------------)
-    + [4，尽可能的使用 NOT NULL列,可为NULL的列占用额外的空间,且在值比较和使用索引时需要特殊处理,影响性能](#4--------not-null----null--------------------------------)
-    + [5，用exists、not exists和in、not in相互替代](#5--exists-not-exists-in-not-in----)
-    + [6，使用exists替代distinct](#6---exists--distinct)
-    + [7，避免隐式数据类型转换](#7-----------)
-    + [8，分段查询](#8-----)
-  * [Expalin 分析执行计划](#expalin-------)
+    + [索引失效原因](#索引失效原因)
+  * [4,sql优化建议](#sql优化建议)
+    + [1，sql的执行顺序](#2)
+    + [2，超过三个表最好不要 join](#3)
+    + [3，避免 SELECT *，从数据库里读出越多的数据，那么查询就会变得越慢](#4)
+    + [4，尽可能的使用 NOT NULL列,可为NULL的列占用额外的空间,且在值比较和使用索引时需要特殊处理,影响性能](#5)
+    + [5，用exists、not exists和in、not in相互替代](#6)
+    + [6，使用exists替代distinct](#7)
+    + [7，避免隐式数据类型转换](#8)
+    + [8，分段查询](#9)
+  * [Expalin 分析执行计划](#10)
 ## 存储引擎的选择（MyISAM 和 Innodb）<span id = 1 ></span>
 `存储引擎：`MySQL中的数据、索引以及其他对象是如何存储的，是一套文件系统的实现。5.1之前默认存储引擎是MyISAM,5.1之后默认存储引擎是Innodb。
 ### 功能差异
@@ -55,12 +55,12 @@ Innodb：更新（删除）操作频率也高，或者要保证数据的完整�
 4，尽量将列设置为NOT NULL
 5，尽量使用整型做主键
 ## 索引
-### 使用索引为什么快？
+### 使用索引为什么快
 - 索引相对于数据本身,数据量小
 - 索引是有序的，可以快速确定数据位置
 - InnoDB的表示索引组织表,表数据的分布按照主键排序
 就好比书的目录,想要找到某一个内容,直接看目录便可找到对应的页
-### 索引的存储结构？
+### 索引的存储结构
 B+树、哈希。
 Mysql中的主键索引用的是B+树结构,非主键索引可以选择B+树或者哈希。（建议使用B+索引）
 >哈希索引的缺点：  
@@ -126,7 +126,7 @@ select clo1,clo2 from t where clo = 1
 5.or (or两边的列都建立了索引则可以使用索引)  
 6.类型不一致  
 ## sql优化建议
-### 1，sql的执行顺序
+### 1，sql的执行顺序<span id = 2 ></span>
 (1)FROM:数据从硬盘加载到数据缓冲区，方便对接下来的数据进行操作  
 (2)ON:join on实现多表连接查询,先筛选on的条件,再连接表  
 (3)JOIN:将join两边的表根据on的条件连接  
@@ -143,17 +143,17 @@ select clo1,clo2 from t where clo = 1
 - 避免使用HAVING筛选数据,而是使用where
 - ORDER BY后面的字段建立索引,利用索引的有序性排序,避免外部排序
 - 如果明确知道只有一条结果返回，limit 1 能够提高效率
-### 2，超过三个表最好不要 join
-### 3，避免 SELECT *，从数据库里读出越多的数据，那么查询就会变得越慢
-### 4，尽可能的使用 NOT NULL列,可为NULL的列占用额外的空间,且在值比较和使用索引时需要特殊处理,影响性能
-### 5，用exists、not exists和in、not in相互替代
+### 2，超过三个表最好不要 join<span id = 3 ></span>
+### 3，避免 SELECT *，从数据库里读出越多的数据，那么查询就会变得越慢<span id = 4 ></span>
+### 4，尽可能的使用 NOT NULL列,可为NULL的列占用额外的空间,且在值比较和使用索引时需要特殊处理,影响性能<span id = 5 ></span>
+### 5，用exists、not exists和in、not in相互替代<span id = 6 ></span>
 原则是哪个的子查询产生的结果集小，就选哪个
 ```mysql
-select * from t1 where x in (select y from t2)
+select * from t1 where x in (select y from t2);
 select * from t1 where exists (select null from t2 where y =x)
 ```
 IN适合于外表大而内表小的情况；exists适合于外表小而内表大的情况
-### 6，使用exists替代distinct
+### 6，使用exists替代distinct<span id = 7 ></span>
 当提交一个包含一对多表信息（比如部门表和雇员表）的查询时，避免在select子句中使用distinct，一般可以考虑使用exists代替，exists使查询更为迅速，因为子查询的条件一旦满足，立马返回结果。
 低效写法：
 ```mysql
@@ -168,7 +168,7 @@ select dept_no,dept_name from dept d where exists (select 'x' from emp e where e
 ```mysql
 select * from emp where dept_no exists (select Max(dept_no)) from dept d, emp e where e.dept_no=d.dept_no group by d.dept_no)
 ```
-### 7，避免隐式数据类型转换
+### 7，避免隐式数据类型转换<span id = 8 ></span>
 隐式数据类型转换不能适用索引，导致全表扫描！t_tablename表的phonenumber字段为varchar类型
 以下代码不符合规范：
 ```mysql
@@ -178,7 +178,7 @@ select column1 into i_l_variable1 from t_tablename where phonenumber=18519722169
 ```mysql
 select column1 into i_lvariable1 from t_tablename where phonenumber='18519722169';
 ```
-### 8，分段查询
+### 8，分段查询<span id = 9 ></span>
 在一些查询页面中，当用户选择的时间范围过大，造成查询缓慢。主要的原因是扫描行数过多。这个时候可以通过程序，分段进行查询，循环遍历，将结果合并处理进行展示
 ## Expalin 分析执行计划
 explain显示了mysql如何使用索引来处理select语句以及连接表。可以帮助选择更好的索引和写出更优化的查询语句。
@@ -194,7 +194,7 @@ explain SELECT user_name from sys_user where user_id <10
 ![](https://pic3.zhimg.com/80/v2-2dccf2d8aa65065fb9d33f2c964db6f6_hd.jpg)
 
 ---
-### EXPLAIN列的解释：
+### EXPLAIN列的解释：<span id = 10 ></span>
 ####select_type
 1） SIMPLE：简单的SELECT，不实用UNION或者子查询。  
 2） PRIMARY：最外层SELECT。  
@@ -205,10 +205,10 @@ explain SELECT user_name from sys_user where user_id <10
 7） DEPENDENT SUBQUERY：子查询中的第一个SELECT，取决于外面的查询。  
 8） DERIVED：导出表的SELECT（FROM子句的子查询）  
 
-### table
+#### table
 显示这一行的数据是关于哪张表的
 
-### type
+#### type
 这是重要的列，显示连接使用了何种类型。  
 从最好到最差的连接类型：const、eq_reg、ref、range、index和ALL
 
@@ -227,22 +227,22 @@ Type：告诉我们对表使用的访问方式，主要包含如下集中类型�
 11） system：系统表，表中只有一行数据；   
 12） unique_subquery：子查询中的返回结果字段组合是主键或唯一约束。  
 
-### possible_keys
+#### possible_keys
 显示可能应用在这张表中的索引。如果为空，没有可能的索引。可以为相关的域从WHERE语句中选择一个合适的语句
 
-### key
+#### key
 实际使用的索引。如果为NULL，则没有使用索引。很少的情况下，MYSQL会选择优化不足的索引。这种情况下，可以在SELECT语句中使用USE INDEX（indexname）来强制使用一个索引或者用IGNORE INDEX（indexname）来强制MYSQL忽略索引
 
-### key_len
+#### key_len
 使用的索引的长度。在不损失精确性的情况下，长度越短越好
 
 ### ref
 显示索引的哪一列被使用了，如果可能的话，是一个常数
 
-### rows
+#### rows
 MYSQL认为必须检查的用来返回请求数据的行数
 
-### Extra
+#### Extra
 关于MYSQL如何解析查询的额外信息。将在表4.3中讨论，但这里可以看到的坏的例子是Using temporary和Using filesort，意思MYSQL根本不能使用索引，结果是检索会很慢
 
 Extra字段解释
