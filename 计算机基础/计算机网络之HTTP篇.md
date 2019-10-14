@@ -31,8 +31,6 @@
     + [3.HTTP 1.1](#1http11)
     + [4.HTTP 2.0](#1http20)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 ## HTTP协议简介
 HTTP（超文本传输协议）是应用层上的一种`客户端/服务端模型`的通信`协议`,它由请求和响应构成，且是`无状态`的。（暂不介绍HTTP2）
 - 协议  
