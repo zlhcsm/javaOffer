@@ -65,15 +65,15 @@
 ### 数组
 本算法系列感谢[郭耀华的博客](https://www.cnblogs.com/guoyaohua/p/8600214.html)
 #### 冒泡排序[详解]()(data_structure/BubbleSort.md)
-#### 选择排序[详解]()
-#### 插入排序[详解]()
-#### 归并排序[详解]()
+#### 选择排序[详解](data_structure/SelectionSort.md)
+#### 插入排序[详解](data_structure/InsertSort.md)
+#### 归并排序[详解](data_structure/MergeSort.md)
 #### 小和问题[详解]()
 #### 逆序对问题[详解]()
 #### 快速排序[详解](data_structure/QuickSort.md)
-#### 堆排序[详解]()
-#### 桶排序[详解]()
-#### 基数排序[详解]()
+#### 堆排序[详解](data_structure/HeapSort.md)
+#### 桶排序[详解](data_structure/BucketSort.md)
+#### 基数排序[详解](data_structure/RadixSort.md)
 #### 排序算法分析[详解]()
 >普及知识：比较器
 ### 链表

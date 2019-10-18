@@ -9,11 +9,9 @@ public class QuickSort {
         // write code here
         if (A == null || A.length < 2)
             return null;
-
         sort(A, 0, n - 1);
         return A;
     }
-
     public static void sort(int[] A, int lo, int hi) {
         if (lo < hi) {
             int mid = partition(A, lo, hi);
@@ -21,7 +19,6 @@ public class QuickSort {
             sort(A, mid + 1, hi);
         }
     }
-
     public static int partition(int[] A, int lo, int hi) {
         if (lo == hi)
             return lo;
