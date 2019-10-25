@@ -8,8 +8,10 @@ Logo | ![](/image/java.svg) | ![](/image/computer.svg) | ![](/image/算法模型
 ![](/image/logo.svg)
 ## 1，Java<span id = 1></sapn>
 ### 基础
+#### [java面试基础篇p1](/java基础/java面试基础P1.md)
 #### [java面试基础篇p2](/java基础/java面试基础P2.md)
 #### [java面试基础篇p3](/java基础/java面试基础P3.md)
+#### [java面试基础篇p4](/java基础/java面试基础P4.md)
 ## 高级
 #### [java高级之多线程](/java基础/java高级之多线程.md)
 #### [java高级之集合篇](/java基础/java高级之集合篇.md)
