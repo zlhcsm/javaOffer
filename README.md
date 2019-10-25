@@ -18,6 +18,7 @@ Logo | ![](/image/java.svg) | ![](/image/computer.svg) | ![](/image/算法模型
 #### [javajava高级之生产者消费者篇](/java基础/java高级之生产者消费者篇.md)
 ## 2，计算机基础<span id = 2></sapn>
 ### 综合
+#### [计算机基础P1](计算机基础/计算机基础P1.md)
 #### [计算机基础P2](计算机基础/计算机基础P2.md)
 ### MySQL
 #### [数据库专练](计算机基础/数据库专练.md)
